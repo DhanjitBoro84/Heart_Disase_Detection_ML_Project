@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+		<title>Heart Disease Prediction</title>
+		<style>
+			body {
+            	text-align: center;
+            	font-family: Arial, sans-serif;
+				background-color: black;
+        	}
+
+        	.container {
+            	width: 55%;
+            	margin: auto;
+            	border: 1px solid #ccc;
+            	padding: 20px;
+            	background-color: lightskyblue;
+        	}
+
+        	form {
+            	text-align: left;
+        	}
+
+        	label {
+            	font-weight: bold;
+        	}
+
+        	input, select {
+            	margin-bottom: 10px;
+            	padding: 5px;
+            	width: 100%;
+        	}
+
+        	button {
+            	margin-top: 20px;
+            	padding: 10px 20px;
+            	background-color: #007BFF;
+            	color: #fff;
+            	border: none;
+            	cursor: pointer;
+        	}
+			.contain {
+				display: flex;
+            	justify-content: center;
+            	width: 55%;
+            	margin: auto;
+            	padding: 20px;
+            	margin-top: 10px;
+				background-color: lightskyblue;
+        	}
+		</style>
+</head>
+<body>
+	<div class="container" >
+		<div class="div"> 
+			<h1><pre>  <b>HEART DISEASE PREDICTION SYSTEM</b></pre></h1>
+			<form action={{ url_for('predict')}} method="post">
+				<label for="age"><b>AGE: </b></label><br>
+				<input type="number" id="age" name="age" required><br><br>
+        
+				<label for="sex"><b>SEX: </b></label><br>
+				<select name="sex" required>
+					<option>None</option>
+					<option value="0">Female</option>
+					<option value="1">Male</option>
+				</select><br><br>
+
+				<label for="cp"><b>CHEST PAIN TYPE: </b></label><br>
+				<select name="cp" required>
+					<option>None</option>
+					<option value="0">Typical Angina</option>
+					<option value="1">Atypical Angina</option>
+					<option value="2">Non-Anginal Pain</option>
+					<option value="3">Asymptomatic</option>
+				</select><br><br>
+		
+				<label for="trestbps"><b>RESTING BLOOD PRESSURE: <b/></label><br>
+				<input type="number" name="trestbps" requiredd><br><br>
+		
+				<label for="chol">CHOLESTEROL LEVEL: </label><br>
+				<input type="number" name="chol" required><br><br>
+		
+				<label for="fbs"><b>FASTING BLOOD SUGAR: </b></label><br>
+				<select name="fbs" required>
+					<option value="0">Doesn't Have</option>
+					<option value="1">Have</option>
+				</select><br><br>
+		
+				<label for="restecg"><b>RESTING ELECTROCARDIOGRAPHIC RESULTS: </b></label><br>
+				<select name="restecg" required>
+					<option value="0">Normal</option>
+					<option value="1">Having ST-T Wave Abnormality</option>
+					<option value="2">Definite Left Ventricular Hypertrophy</option>
+				</select><br><br>
+		
+				<label for="thalach"><b>HEART RATE DURING EXERCISE: </b></label><br>
+				<input type="number" name="thalach" required><br><br>
+		
+				<label for="exang"><b>EXERCISE-INDUCED ANGINA: </label><br>
+				<select name="exang" required>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select><br><br>
+		
+				<label for="oldpeak"><b>ST DEPRESSION INDUCED BY EXERCISE: </b></label><br>
+				<input type="text" name="oldpeak" required><br><br>
+		
+				<label for="slope"><b>SLOPE OF THE EXERCISE: </b></label><br>
+				<select name="slope" required>
+					<option>None</option>
+					<option value="1">Upsloping</option>
+					<option value="2">Flat</option>
+					<option value="3">Downsloping</option>
+				</select><br><br>
+		
+				<label for="ca"><b>VESSELS COLORED BY FLUOROSCOPY: </b></label><br>
+				<select name="ca" required>
+					<option>None</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select><br><br>
+		
+				<label for="thal"><b>THALASSEMIA: </b></label><br>
+				<select name="thal" required>
+					<option>None</option>
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select><br><br>
+			</form>
+			<div class="contain">
+				<pre><button type="submit" class="btn btn-primary btn-block btn-large "><b> PREDICT </b></button></pre>
+			</div>
+		</div>
+	</div>
+	<div class="contain">
+        <div class="div">
+			<h2>Prediction Result</h2>
+            <pre><h1> {{ prediction_text }} </h1></pre>
+			<form action="/clear" method="get">
+                <pre>	<button type="submit" class="btn btn-primary btn-block btn-large"><b> CLEAR </b></button></pre>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
